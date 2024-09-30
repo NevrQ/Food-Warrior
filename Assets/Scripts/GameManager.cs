@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +37,15 @@ public class GameManager : MonoBehaviour
 
 	void GameOver()
 	{
-		gameOverScreen.SetActive(true);
-	}
+        Time.timeScale = 0;
+        gameOverScreen.SetActive(true);
+		livesText.gameObject.SetActive(false);
+		scoreText.gameObject.SetActive(false);
+    }
+
+    public void OnClick()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
